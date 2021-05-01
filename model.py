@@ -22,7 +22,7 @@ class User(db.Model):
     def __repr__(self):
         return f'<User user_id={self.user_id} email={self.email}>'
 
-class lesson(db.Model):
+class lesson(db.Model): #doublecheck Python convention for class capitalizion
     """A Lesson."""
 
     __tablename__ = 'lessons'
@@ -30,7 +30,7 @@ class lesson(db.Model):
     lesson_id = db.Column(db.Integer, autoincrement=True, primary_key=True) #should this be string or integer?
     skilljar_lesson_id = db.Column(db.String, unique=True)
     lesson_name = db.Column(db.String) #do we need to specify null or not
-    publish_date = db.Column(db.DateTime)
+    publish_date = db.Column(db.DateTime) #doublecheck caps convention on DateTime
     registrations= db.Column(db.Integer)
 
 
@@ -40,9 +40,9 @@ class lesson(db.Model):
 class SME(db.Model):
     """A SME (subject matter expert)."""
 
-    __tablename__ = 'SMEs' 
+    __tablename__ = 'SMEs' #consider changing to lowercase to align with industry best practices/future consideration
 
-    SME_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    SME_id = db.Column(db.Integer, autoincrement=True, primary_key=True) #variable names should be lowercase
     email = db.Column(db.String, unique=True)
     fname = db.Column(db.String, unique=False) #there might be SMEs who have the same firstname, so unique set to False
     lname = db.Column(db.String, unique=False)
