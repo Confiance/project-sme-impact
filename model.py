@@ -1,4 +1,4 @@
-"""Models for SME Impact app."""
+"""Models for sme Impact app."""
 
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -13,16 +13,16 @@ class User(db.Model):
 
     user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     email = db.Column(db.String, unique=True)
-    fname = db.Column(db.String, unique=False) #there might be users who have the same firstname, so unique set to False
-    lname = db.Column(db.String, unique=False)
+    first_name = db.Column(db.String, unique=False) #there might be users who have the same firstname, so unique set to False
+    last_name = db.Column(db.String, unique=False)
     password = db.Column(db.String)
 
-    # registrations = a list of registrations per lesson
+    # enrollments = a list of enrollments per lesson
 
     def __repr__(self):
         return f'<User user_id={self.user_id} email={self.email}>'
-
-class lesson(db.Model): #doublecheck Python convention for class capitalizion
+      
+class Lesson(db.Model): #doublecheck Python convention for class capitalizion
     """A Lesson."""
 
     __tablename__ = 'lessons'
@@ -31,25 +31,25 @@ class lesson(db.Model): #doublecheck Python convention for class capitalizion
     skilljar_lesson_id = db.Column(db.String, unique=True)
     lesson_name = db.Column(db.String) #do we need to specify null or not
     publish_date = db.Column(db.DateTime) #doublecheck caps convention on DateTime
-    registrations= db.Column(db.Integer)
+    enrollments= db.Column(db.Integer)
 
 
     def __repr__(self):
         return f'<Lesson lesson_id={self.lesson_id} lesson_name={self.lesson_name}>'
 
-class SME(db.Model):
-    """A SME (subject matter expert)."""
+class sme(db.Model):
+    """A sme (subject matter expert)."""
 
-    __tablename__ = 'SMEs' #consider changing to lowercase to align with industry best practices/future consideration
+    __tablename__ = 'smes' #consider changing to lowercase to align with industry best practices/future consideration
 
-    SME_id = db.Column(db.Integer, autoincrement=True, primary_key=True) #variable names should be lowercase
-    email = db.Column(db.String, unique=True)
-    fname = db.Column(db.String, unique=False) #there might be SMEs who have the same firstname, so unique set to False
-    lname = db.Column(db.String, unique=False)
-    jobtitle = db.Column(db.String, unique=False) #SMEs often have the same job title, like Support Engineer or DevOps Engineer
+    sme_id = db.Column(db.Integer, autoincrement=True, primary_key=True) #variable names should be lowercase
+    email = db.Column(db.String,nullable =False, unique=True)
+    first_name = db.Column(db.String, nullable =False, unique=False) #there might be smes who have the same firstname, so unique set to False
+    last_name = db.Column(db.String, nullable =False, unique=False)
+    job_title = db.Column(db.String, nullable =False, unique=False) #smes often have the same job title, like Support Engineer or DevOps Engineer
 
-def __repr__(self):
-        return f'<SME SME_id={self.SME_id} email={self.email}>'
+    def __repr__(self):
+        return f'<sme sme_id={self.sme_id} email={self.email}>'
 
 
 def connect_to_db(flask_app, db_uri='postgresql:///lessons', echo=True):
