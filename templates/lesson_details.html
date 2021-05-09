@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ lesson.lesson_name }} - Details{% endblock %}
+
+{% block body %}
+<h1>{{ lesson.lesson_name }}</h1>
+
+<p>
+    
+  # of enrollments: {{ lesson.enrollments }}
+</p>
+
+<!-- course image from CircleCI Academy to be imported in later sprint> -->
+<!-- <img src=""> -->
+{% endblock %}

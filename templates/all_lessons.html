@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}All Lessons{% endblock %}
+
+{% block body %}
+  <h1>All CircleCI Academy Lessons</h1>
+
+  <ul>
+    {% for lesson in lessons %}
+      <li>
+        <a href="/lessons/{{ lesson.lesson_id }}">
+          {{ lesson.lesson_name }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -13,6 +13,20 @@ def create_user(first_name, last_name, email, password):
 
     return user
 
+def get_users():
+    """Return all users."""
+
+    return User.query.all()
+
+def get_user_by_id(user_id):
+    """Return a user by primary key."""
+
+    return User.query.get(user_id)
+
+def get_user_by_email(email):
+    """Return a user by email."""
+
+    return User.query.filter(User.email == email).first()
 
 def create_sme(first_name, last_name, job_title, email):
     """Create and return a new subject matter expert (sme)."""
@@ -38,3 +52,26 @@ def create_lesson(lesson_name, publish_date, enrollments):
     db.session.commit()
 
     return lesson
+
+def get_lessons():
+    """Return all lessons."""
+
+    return Lesson.query.all()
+
+
+def get_lesson_by_id(lesson_id):
+    """Return a lesson by primary key."""
+
+    return Lesson.query.get(lesson_id)
+
+def create_rating(user, movie, score):
+    """Create and return a new rating."""
+
+    rating = Rating(user=user, movie=movie, score=score)
+
+    db.session.add(rating)
+    db.session.commit()
+
+    return rating
+
+

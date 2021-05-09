@@ -60,7 +60,7 @@ def connect_to_db(flask_app, db_uri='postgresql:///lessons', echo=True):
     db.app = flask_app
     db.init_app(flask_app)
 
-    print('Connected to the Impact database')
+    print('Connected to the Subject Matter Expert Impact database')
 
 
 if __name__ == '__main__':

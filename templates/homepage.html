@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Subject Matter Expert Impact Home{% endblock %}
+
+{% block body %}
+  <h1>Welcome to the Subject Matter Expert Impact Tool!</h1>
+
+  <h2>Navigation</h2>
+  <ul>
+    <li><a href="/smes">View all subject matter experts (SMEs)</a></li>
+    <li><a href="/users">View all users</a></li>
+    <li><a href="/lessons">View all lessons</a></li>
+  </ul>
+
+  <h2>Create an Account</h2>
+  <form action="/users" method="POST">
+    <p>
+      Email <input type="text" name="email">
+    </p>
+
+    <p>
+      Password <input type="password" name="password">
+    </p>
+
+    <p>
+      <input type="submit">
+    </p>
+  </form>
+
+{% endblock %}
