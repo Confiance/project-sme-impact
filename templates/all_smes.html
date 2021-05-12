@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}All Subject Matter Experts (SMEs){% endblock %}
+
+{% block body %}
+  <h1>All CircleCI Academy Subject matter experts</h1>
+
+  <ul>
+    {% for sme in smes %}
+      <li>
+        <a href="/smes/{{ sme.sme_id }}">
+          {{ sme.first_name}} {{sme.last_name }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
