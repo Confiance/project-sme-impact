@@ -37,8 +37,8 @@ class Lesson(db.Model): #doublecheck Python convention for class capitalizion
     def __repr__(self):
         return f'<Lesson lesson_id={self.lesson_id} lesson_name={self.lesson_name}>'
 
-class sme(db.Model):
-    """A sme (subject matter expert)."""
+class Sme(db.Model): #confirmed on https://www.python.org/dev/peps/pep-0008/#class-names that class names use CapWords convention
+    """A SME (subject matter expert)."""
 
     __tablename__ = 'smes' #consider changing to lowercase to align with industry best practices/future consideration
 
