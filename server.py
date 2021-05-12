@@ -67,6 +67,33 @@ def show_user(user_id):
 
     return render_template('user_details.html', user=user)
 
+
+@app.route('/login/, methods=["POST"]')
+def process_login():
+    """"Process user login."""
+
+    email = request.form.get("email")
+    password = request.form.get("password")
+
+    user = crud.get_user_by_email(email)
+    if not user or user.password != password:
+        flash("The email or password you entered was incorrect.")
+    else:
+        # Log in user by storing the user's email in session
+        session["user_email"] = user.email
+        flash(f"Welcome back, {user.email}!")
+
+    return redirect("/")
+
+@app.route('/smes')
+def all_smes():
+    """View all SMEs."""
+
+    smes = crud.get_SMEs()
+
+    return render_template('all_smes.html', smes=smes)
+
+
 if __name__ == '__main__':
     connect_to_db(app)
     app.run(host='0.0.0.0', debug=True)
