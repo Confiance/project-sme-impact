@@ -47,3 +47,22 @@ for course in data['results']:
                     enrollments=enrollmentcount)
 
         #print(lesson)
+
+
+#seed smes
+# smeF = crud.create_sme(first_name="Fred",
+                #   last_name="Bret-Mounet",
+                #   job_title="CISO",
+                #   email="freedomfred@gmail.com")
+
+smeA = crud.create_sme(first_name="Amina",
+                  last_name="Khattak",
+                  job_title="Director, Technical Training and Content",
+                  email="amina@circleci.com")
+
+lessonA = crud.get_lesson_by_id(9)
+print(lesson_name)
+# lessonA.sme_id = smeA.sme_id
+smeA.lessons.append(lessonA)
+print(smeA)
+model.db.session.commit()

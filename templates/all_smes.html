@@ -2,8 +2,33 @@
 {% block title %}All Subject Matter Experts (SMEs){% endblock %}
 
 {% block body %}
-  <h1>All CircleCI Academy Subject matter experts</h1>
+  <h1>All CircleCI Academy Subject Matter Experts (SMEs)</h1>
 
+  <h2>Create new SME</h2>
+  <form action="/smes" method="POST">
+   
+    <p>
+      SME First Name <input type="text" name="first_name">
+    </p>
+
+    <p>
+      SME Last Name <input type="text" name="last_name">
+    </p>
+
+    <p>
+      SME Job Title <input type="text" name="job_title">
+    </p>
+    <p>
+      SME Email <input type="text" name="email">
+    </p>
+
+    <p>
+      <input type="submit">
+    </p>
+
+    <p>
+      Select the SME name below to view information about lessons for which they were an author.
+    </p>
   <ul>
     {% for sme in smes %}
       <li>

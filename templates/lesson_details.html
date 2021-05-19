@@ -1,15 +1,37 @@
 {% extends 'base.html' %}
 
 {% block title %}{{ lesson.lesson_name }} - Details{% endblock %}
+{% block head %}
 
+{% endblock %}
 {% block body %}
 <h1>{{ lesson.lesson_name }}</h1>
-
 <p>
-    
+Lesson ID:  {{ lesson.lesson_id }}
+</p>
+<p>
+  Sme:  <span id="sme_name">{{ sme.first_name}} {{ sme.last_name }}</span>
+  </p>
+  <p>
+ 
   # of enrollments: {{ lesson.enrollments }}
 </p>
-
+<form id="add-sme" method="POST">
+  <input type="hidden" id="lesson_id" value="{{lesson.lesson_id}}">
+  <label for="sme-id">
+    Select SME name to be added:
+  </label>
+  <select id="sme-id" name="sme_id">
+    
+    {% for sme in smes %}
+      <option value="{{ sme.sme_id }}"> {{ sme.first_name}} {{sme.last_name }}</option>
+    {% endfor %}
+  </select>
+  <button type="submit" id="submit">Submit</button>
+</form>
 <!-- course image from CircleCI Academy to be imported in later sprint> -->
 <!-- <img src=""> -->
+
+
+<script src="/static/ajax.js"></script>
 {% endblock %}

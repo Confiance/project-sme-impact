@@ -32,10 +32,11 @@ class Lesson(db.Model): #doublecheck Python convention for class capitalizion
     lesson_name = db.Column(db.String) #do we need to specify null or not
     publish_date = db.Column(db.DateTime) #doublecheck caps convention on DateTime
     enrollments= db.Column(db.Integer)
-
+    sme_id = db.Column(db.Integer, db.ForeignKey('smes.sme_id'), nullable=True)
+    
 
     def __repr__(self):
-        return f'<Lesson lesson_id={self.lesson_id} lesson_name={self.lesson_name}>'
+        return f'<Lesson lesson_id={self.lesson_id} lesson_name={self.lesson_name} sme={self.sme_id}>'
 
 class Sme(db.Model): #confirmed on https://www.python.org/dev/peps/pep-0008/#class-names that class names use CapWords convention
     """A SME (subject matter expert)."""
@@ -47,6 +48,8 @@ class Sme(db.Model): #confirmed on https://www.python.org/dev/peps/pep-0008/#cla
     first_name = db.Column(db.String, nullable =False, unique=False) #there might be smes who have the same firstname, so unique set to False
     last_name = db.Column(db.String, nullable =False, unique=False)
     job_title = db.Column(db.String, nullable =False, unique=False) #smes often have the same job title, like Support Engineer or DevOps Engineer
+    lessons = db.relationship('Lesson', backref='smes')
+
 
     def __repr__(self):
         return f'<sme sme_id={self.sme_id} email={self.email}>'

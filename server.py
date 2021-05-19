@@ -1,7 +1,7 @@
 """Server for SME Impact app."""
 
 from flask import (Flask, render_template, request, flash, session, redirect)
-from model import connect_to_db
+from model import connect_to_db,Sme,db
 import crud
 
 from jinja2 import StrictUndefined
@@ -24,13 +24,36 @@ def all_lessons():
     print(lessons)
     return render_template('all_lessons.html', lessons=lessons)
 
+@app.route('/updateLessonSme',methods=["POST"])
+def update_sme():
+    lesson_id= request.json['lesson_id'] 
+    sme_id= request.json['sme_id'] 
+    print("updating ", lesson_id, "with sme",sme_id)
+    lesson = crud.get_lesson_by_id(lesson_id)
+    sme = crud.get_sme_by_id(sme_id)
+
+    sme.lessons.append(lesson)
+
+    db.session.commit()
+
+    return sme.first_name+" "+sme.last_name
+
+
+
 @app.route('/lessons/<lesson_id>')
 def show_lesson(lesson_id):
     """Show details on a particular lesson."""
 
     lesson = crud.get_lesson_by_id(lesson_id)
+    if lesson.sme_id is None:
+        sme = Sme()
+    else:
+        sme = crud.get_sme_by_id(lesson.sme_id)
+    smes = crud.get_SMEs()
 
-    return render_template('lesson_details.html', lesson=lesson)
+    return render_template('lesson_details.html', lesson=lesson, sme = sme, smes = smes)
+
+
 
 @app.route('/users')
 def all_users():
@@ -92,6 +115,25 @@ def all_smes():
     smes = crud.get_SMEs()
 
     return render_template('all_smes.html', smes=smes)
+
+@app.route('/smes', methods=['POST'])
+def create_sme():
+    """Create a new SME."""
+
+    first_name = request.form.get('first_name')
+    last_name = request.form.get('last_name')
+    job_title = request.form.get('job_title')
+    email = request.form.get('email')
+    
+
+    sme = crud.get_sme_by_email(email)
+    if sme:
+        flash('Cannot create a SME with that email. Try again.')
+    else:
+        crud.create_sme(first_name, last_name, job_title, email)
+        flash('SME created!')
+
+    return redirect('/smes')
 
 
 if __name__ == '__main__':

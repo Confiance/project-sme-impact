@@ -1,6 +1,6 @@
 """CRUD operations."""
 
-from model import db, User, Lesson, sme, connect_to_db
+from model import db, User, Lesson, Sme, connect_to_db
 
 
 def create_user(first_name, last_name, email, password):
@@ -31,7 +31,7 @@ def get_user_by_email(email):
 def create_sme(first_name, last_name, job_title, email):
     """Create and return a new subject matter expert (sme)."""
 
-    sme = sme(first_name=first_name,
+    sme = Sme(first_name=first_name,
                   last_name=last_name,
                   job_title=job_title,
                   email=email)
@@ -58,20 +58,22 @@ def get_lessons():
 
     return Lesson.query.all()
 
+def get_SMEs():
+    """Return all SMEs."""
+
+    return Sme.query.all()
+
+def get_sme_by_email(email):
+    """Return a SME by email."""
+
+    return Sme.query.filter(Sme.email == email).first()
+
+def get_sme_by_id(id):
+    """Return a SME by id."""
+
+    return Sme.query.get(id)
 
 def get_lesson_by_id(lesson_id):
     """Return a lesson by primary key."""
 
     return Lesson.query.get(lesson_id)
-
-def create_rating(user, movie, score):
-    """Create and return a new rating."""
-
-    rating = Rating(user=user, movie=movie, score=score)
-
-    db.session.add(rating)
-    db.session.commit()
-
-    return rating
-
-
