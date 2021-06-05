@@ -1,0 +1,45 @@
+
+/*   Sitewide  */
+
+.navbar {
+	background-color: #5781c1;
+	color: white;
+	border-radius: 0px;
+}
+
+#SME-logo, #SME-logo:hover, .navbar-dark .navbar-brand {
+	color: #151515;
+}
+
+.navbar-nav>li>a, .navbar-dark .navbar-nav .nav-link {
+	color: white;
+}
+
+section {
+	margin-top: 50px;
+}
+
+
+/*  First row  */
+
+#hero	{
+	height: 400px;
+}
+
+#splash {
+	margin-bottom: 25px;
+	font-size: 18px;
+}
+
+
+/* Features Row */
+
+.feature {
+	text-align: center;
+}
+
+/* Further Study */
+
+#modalLabel {
+	color: black;
+}
