@@ -1,8 +1,6 @@
-# project-sme-impact
-Hackbright capstone project. 
-# Foobar
+# Subject Matter Impact Site
+My Hackbright Academy capstone project. 
 
-Foobar is a Python library for dealing with word pluralization.
 
 ## Description
 
