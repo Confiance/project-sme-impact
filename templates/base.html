@@ -12,7 +12,7 @@
     <script src="http://code.jquery.com/jquery.js"></script>
    
     <!-- Our custom styles -->
-    <link rel="stylesheet" href="/static/css/bootstrap-styles.css">
+    <link rel="stylesheet" href="/static/css/bootstrap-styles1.css">
 
 
     
@@ -42,23 +42,26 @@
       <li class="nav-item">
         <a class="nav-link" href="/about">About</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Contact</a>
-      </li>
+     
       
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">Login</a>
+        <a class="nav-link" href="/login">Login</a>
       </li>
       
       
     <li class="nav-item">
-        <a class="nav-link" href="#">Profile</a>
+        <a class="nav-link" href="/register">Register</a>
       </li>
     </ul>
   </div>
-
+      <!-- Search form -->
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+      <!-- End search -->
 </nav>
   <!-- It's container-fluid so it spans the entire page. -->
   <div class="container-fluid">
@@ -72,6 +75,26 @@
     {% block body %}{% endblock %}
 
     {% block after_body %}{% endblock %}
+
+    <!-- footer -->
+    
+    <footer class="footer">
+      <div class="container-fluid">
+
+        <span class="text-muted">&copy; 2021 Amina Khattak</span>
+      </div>
+    </footer>
+ 
+    <!-- <footer>
+      <div class="row text-center">
+      <div class="col-md-4">
+
+      </div>
+
+      <div class="col-md-4">
+        <p>&copy; 2021 Amina Khattak</p>
+      
+    </footer> -->
 
     <!-- jQuery script tag from code.jquery.com -->
     <script

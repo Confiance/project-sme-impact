@@ -2,53 +2,63 @@
 {% block title %}Subject Matter Expert Impact Home{% endblock %}
 
 {% block body %}
-  <h1>Welcome to the Subject Matter Expert Impact Tool!</h1>
+<main role="main">
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Welcome to the Subject Matter Expert Impact Tool!</h1>
+      <p class="lead text-muted">This is an internal facing tool to enable learning and development (L&D) staff to track subject matter experts (SMEs), the lessons they have contributed to on the <a href="/https://www.skilljar.com/">Skilljar</a> learning management system, and the impact of those lessons.</p>
+    
+    </div>
+  </section>
 
-  <h2>Navigation</h2>
-  <ul>
-    <li><a href="/smes">View all subject matter experts (SMEs)</a></li>
-    <li><a href="/users">View all users</a></li>
-    <li><a href="/lessons">View all lessons</a></li>
-  </ul>
+  <div class="album py-5 bg-light">
+    <div class="container">
 
-  <h2>Create an Account</h2>
-  <form action="/users" method="POST">
-   
-    <p>
-      First Name <input type="text" name="first_name">
-    </p>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-4 box-shadow">
+            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="/static/SMEs.svg" data-holder-rendered="true">
+            <div class="card-body">
+              <a href="/smes">View subject matter experts (SMEs)</a>
+              <!-- <p class="card-text">View SMEs.</p> -->
+              <div class="d-flex justify-content-between align-items-center">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4 box-shadow">
+            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="/static/lessons.svg" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
+            <div class="card-body">
+              <a href="/lessons">View lessons</a>
+              <!-- <p class="card-text">View lessons.</p> -->
+              <div class="d-flex justify-content-between align-items-center">
+                
+               
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4 box-shadow">
+            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="/static/user.svg" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
+            <div class="card-body">
+              <a href="/users">View users</a>
+              <!-- <p class="card-text">View users.</p> -->
+              <div class="d-flex justify-content-between align-items-center">
+                
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <p>
-      Last Name <input type="text" name="last_name">
-    </p>
+</main>
+ 
 
-
-    <p>
-      Email <input type="text" name="email">
-    </p>
-
-    <p>
-      Password <input type="password" name="password">
-    </p>
-
-    <p>
-      <input type="submit">
-    </p>
-
-    <h2>Log In</h2>
-    <form action="/login" method="POST">
-      <p>
-        Email <input type="text" name="email">
-      </p>
-  
-      <p>
-        Password <input type="password" name="password">
-      </p>
-  
-      <p>
-        <input type="submit">
-      </p>
-    </form>
-  </form>
 
 {% endblock %}
