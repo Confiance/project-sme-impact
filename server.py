@@ -16,6 +16,24 @@ def homepage():
 
     return render_template('homepage.html')
 
+@app.route('/about')
+def about():
+    """View About page."""
+
+    return render_template('about.html')
+
+@app.route('/login')
+def login():
+    """Login page."""
+
+    return render_template('login.html')
+
+@app.route('/register')
+def register():
+    """Create new account/registration page."""
+
+    return render_template('register.html')
+
 @app.route('/lessons')
 def all_lessons():
     """View all lessons."""
@@ -115,6 +133,13 @@ def all_smes():
     smes = crud.get_SMEs()
 
     return render_template('all_smes.html', smes=smes)
+@app.route('/smes/<sme_id>')
+def show_sme(sme_id):
+    """Show details on a particular sme."""
+
+    sme = crud.get_sme_by_id(sme_id)
+
+    return render_template('sme_details.html', sme=sme)
 
 @app.route('/smes', methods=['POST'])
 def create_sme():
