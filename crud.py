@@ -73,6 +73,9 @@ def get_sme_by_id(id):
 
     return Sme.query.get(id)
 
+def get_lessons_by_search_term(search_term):
+     return Lesson.query.filter(Lesson.lesson_name.ilike("%"+search_term+"%"))
+
 def get_lesson_by_id(lesson_id):
     """Return a lesson by primary key."""
 
